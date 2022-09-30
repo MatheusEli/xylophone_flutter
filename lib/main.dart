@@ -12,6 +12,29 @@ class XylophoneApp extends StatelessWidget {
     await player.play(AssetSource('note$soundNumber.wav'));
   }
 
+  TextButton buildKey({required Color color, required int soundNumber}) {
+    return TextButton(
+      onPressed: () {
+        playSound(soundNumber);
+      },
+      child: Container(
+        width: 100.0,
+        height: 100.0,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: const Center(
+          child: Icon(
+            CupertinoIcons.play_fill,
+            color: Colors.white,
+            size: 50.0,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,66 +48,9 @@ class XylophoneApp extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TextButton(
-                    onPressed: () async {
-                      playSound(1);
-                    },
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          CupertinoIcons.play_fill,
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      playSound(2);
-                    },
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          CupertinoIcons.play_fill,
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      playSound(3);
-                    },
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          CupertinoIcons.play_fill,
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
-                  ),
+                  buildKey(color: Colors.blue, soundNumber: 1),
+                  buildKey(color: Colors.green, soundNumber: 2),
+                  buildKey(color: Colors.yellow, soundNumber: 3),
                 ],
               ),
               const SizedBox(
@@ -93,66 +59,9 @@ class XylophoneApp extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      playSound(4);
-                    },
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          CupertinoIcons.play_fill,
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      playSound(5);
-                    },
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          CupertinoIcons.play_fill,
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      playSound(6);
-                    },
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Colors.pink,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          CupertinoIcons.play_fill,
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
-                  ),
+                  buildKey(color: Colors.black, soundNumber: 4),
+                  buildKey(color: Colors.orange, soundNumber: 5),
+                  buildKey(color: Colors.grey, soundNumber: 6),
                 ],
               ),
               const SizedBox(
@@ -160,29 +69,7 @@ class XylophoneApp extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      print('atualizou até o ultimo!');
-                      playSound(7);
-                    },
-                    child: Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          CupertinoIcons.play_fill,
-                          color: Colors.white,
-                          size: 50.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                children: [buildKey(color: Colors.red, soundNumber: 7)],
               ),
             ],
           )),
